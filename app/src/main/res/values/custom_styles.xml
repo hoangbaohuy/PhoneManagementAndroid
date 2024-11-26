@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="circular">
+        <item name = "cornerSize">20%</item>
+    </style>
+    <style name="round">
+        <item name = "cornerSize">10%</item>
+    </style>
+    <!-- Define the shape for rounded images -->
+    <style name="RoundImage">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">25%</item> <!-- This rounds the image completely -->
+    </style>
+</resources>
