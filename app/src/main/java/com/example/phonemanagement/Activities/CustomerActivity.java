@@ -26,6 +26,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.interfaces.DecodedJWT;
 import com.example.phonemanagement.Fragments.AccountFragment;
 import com.example.phonemanagement.Fragments.CartFragment;
 import com.example.phonemanagement.Fragments.HistoryFragment;
@@ -34,6 +36,8 @@ import com.example.phonemanagement.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
+
+import im.crisp.client.external.Crisp;
 
 public class CustomerActivity extends AppCompatActivity {
     FloatingActionButton fab;
@@ -80,26 +84,26 @@ public class CustomerActivity extends AppCompatActivity {
             }
         });
 
-//        Crisp.resetChatSession(CustomerActivity.this.getApplicationContext());
-//        SharedPreferences sharedPreferences = getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE);
-//        String jwtToken = sharedPreferences.getString("jwtToken", null);
-//        if (jwtToken != null) {
-//            DecodedJWT decodedJWT = JWT.decode(jwtToken);
-//            String email = decodedJWT.getClaim("email").asString(); // Extract user email or other claims
-//            String userid = decodedJWT.getClaim("userId").asString();
-//
-//            // Set Crisp user information for the new session
-//            Crisp.configure(CustomerActivity.this.getApplicationContext(), "ea85235a-fdd6-4b5c-ab9d-a0d3fc0aac72",jwtToken);
-//            Crisp.setUserEmail(email);
-//
-//        }
+        Crisp.resetChatSession(CustomerActivity.this.getApplicationContext());
+        SharedPreferences sharedPreferences = getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE);
+        String jwtToken = sharedPreferences.getString("jwtToken", null);
+        if (jwtToken != null) {
+            DecodedJWT decodedJWT = JWT.decode(jwtToken);
+            String email = decodedJWT.getClaim("email").asString(); // Extract user email or other claims
+            String userid = decodedJWT.getClaim("userId").asString();
+
+            // Set Crisp user information for the new session
+            Crisp.configure(CustomerActivity.this.getApplicationContext(), "ea85235a-fdd6-4b5c-ab9d-a0d3fc0aac72",jwtToken);
+            Crisp.setUserEmail(email);
+
+        }
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 if (item.getItemId() == R.id.nav_logout) {
                     Log.d("LogoutDebug", "Logout menu item selected");
-//                    handleLogout();
+                    handleLogout();
                     return true;
                 }
                 return false;
@@ -113,27 +117,27 @@ public class CustomerActivity extends AppCompatActivity {
         fragmentTransaction.replace(R.id.fragment_layout, fragment);
         fragmentTransaction.commit();
     }
-//    public void handleLogout() {
-//        // Clear chat data for the current user
-//        Crisp.resetChatSession(CustomerActivity.this.getApplicationContext());
-//
-//        // Continue with logout logic, like clearing user data and redirecting to login
-//        SharedPreferences sharedPreferences = getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE);
-//        SharedPreferences.Editor editor = sharedPreferences.edit();
-//        editor.remove("jwtToken"); // Clear any saved user authentication data
-//        editor.apply();
-//
-//        Intent intent = new Intent(CustomerActivity.this, LoginActivity.class);
-//        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-//        startActivity(intent);
-//        finish();
-//    }
+    public void handleLogout() {
+        // Clear chat data for the current user
+        Crisp.resetChatSession(CustomerActivity.this.getApplicationContext());
+
+        // Continue with logout logic, like clearing user data and redirecting to login
+        SharedPreferences sharedPreferences = getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.remove("jwtToken"); // Clear any saved user authentication data
+        editor.apply();
+
+        Intent intent = new Intent(CustomerActivity.this, LoginActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
+    }
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.nav_logout) {
             Log.d("LogoutDebug", "Logout menu item selected");
 
-//            handleLogout();
+            handleLogout();
             return true;
         }
         return super.onOptionsItemSelected(item);
