@@ -18,5 +18,9 @@
     <color name="primary_text_color">#333333</color> <!-- Dark text color -->
     <color name="secondary_text_color">#555555</color> <!-- Medium text color -->
     <color name="button_color">#6200EE</color> <!-- Purple button color -->
-
+    <color name="aqua">#00FFFF</color>
+    <color name="blue">#0000FF</color>
+    <color name="azure">#007FFF</color>
+    <color name="LightSkyBlue">#87CEFA</color>
+    <color name="VividSkyBlue">#00CCFF</color>
 </resources>
