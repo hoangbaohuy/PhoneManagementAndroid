@@ -33,7 +33,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 
 public class PhoneDetailActivity extends AppCompatActivity {
-
+    private int quantity = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,7 +55,26 @@ public class PhoneDetailActivity extends AppCompatActivity {
         TextView ramTextView = findViewById(R.id.ramTextView);
         TextView storageTextView = findViewById(R.id.storageTextView);
         TextView brandNameTextView = findViewById(R.id.brandNameTextView);
+        ImageView imageMinus = findViewById(R.id.imageMinus);
+        ImageView imageAdd = findViewById(R.id.imageAdd);
+        ImageView imageBack = findViewById(R.id.imageBack);
+        TextView txtOrder = findViewById(R.id.txtOrder);
+        txtOrder.setText(String.valueOf(quantity));
+        imageBack.setOnClickListener(v -> finish());
+        imageMinus.setOnClickListener(v -> {
+            if (quantity > 1) { // Ensure quantity doesn't go below 1
+                quantity--;
+                txtOrder.setText(String.valueOf(quantity)); // Update the TextView
+            } else {
+                Toast.makeText(this, "Quantity cannot be less than 1", Toast.LENGTH_SHORT).show();
+            }
+        });
 
+        // Increase quantity button click listener
+        imageAdd.setOnClickListener(v -> {
+            quantity++;
+            txtOrder.setText(String.valueOf(quantity)); // Update the TextView
+        });
         // Get data passed from the previous activity (HomeFragment)
         Intent intent = getIntent();
         phoneIdTextView.setText("" + intent.getIntExtra("phoneId",0));
@@ -101,8 +120,6 @@ public class PhoneDetailActivity extends AppCompatActivity {
 
                         // Retrieve phoneId and quantity
                         int phoneId = getIntent().getIntExtra("phoneId", 0); // Retrieve phoneId from intent
-                        int quantity = 1; // You can modify this based on user input
-
                         // Create the request body
                         OrderDetail orderDetail = new OrderDetail(phoneId, quantity);
                         List<OrderDetail> orderDetails = new ArrayList<>();

@@ -43,8 +43,8 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         ViewPager2 viewPager2 = view.findViewById(R.id.viewPager);
         List<SlideItem> slideItems = new ArrayList<>();
-        slideItems.add(new SlideItem(R.drawable.slide1));
-        slideItems.add(new SlideItem(R.drawable.slide4));
+        slideItems.add(new SlideItem(R.drawable.tech1));
+        slideItems.add(new SlideItem(R.drawable.tech2));
         viewPager2.setAdapter(new SlideAdapter(slideItems,viewPager2));
 
         // Set up RecyclerView for phones
