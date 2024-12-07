@@ -4,28 +4,38 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="8dp"
-    android:background="?attr/selectableItemBackground">
+    android:layout_margin="10dp"
+    android:background="@drawable/rounded_border">
 
     <TextView
         android:id="@+id/orderId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textStyle="bold"
-        android:textSize="16sp" />
+        android:text="orderId"
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/orderStatus"
+        android:text="orderStatus"
+        android:textSize="18sp"
+        android:textColor="@color/teal_700"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/orderDate"
+        android:text="orderDate"
+        android:textSize="18sp"
+        android:textColor="@color/azure"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/orderTotal"
+        android:text="orderTotal"
+        android:textSize="18sp"
+        android:textColor="@android:color/holo_red_dark"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textStyle="bold" />
+        android:layout_height="wrap_content" />
 </LinearLayout>

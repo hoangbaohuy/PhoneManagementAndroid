@@ -102,8 +102,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
     static class CartViewHolder extends RecyclerView.ViewHolder {
 
         private TextView orderId, orderDetailId, phoneName, quantity, price;
-        private ImageView phoneImage;
-        private Button deleteButton;
+        private ImageView phoneImage, deleteButton;
 
         public CartViewHolder(@NonNull View itemView) {
             super(itemView);

@@ -11,6 +11,8 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:padding="16dp"
+        android:background="@drawable/rounded_border"
+        android:layout_margin="5dp"
         android:clipToPadding="false" />
 
     <LinearLayout
