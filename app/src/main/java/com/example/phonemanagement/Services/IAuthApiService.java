@@ -18,6 +18,4 @@ public interface  IAuthApiService {
     @POST("api/Authen/login")
     Call<ResponseEntity> login(@Body LoginRequest request);
 
-//    @GET("/Authen/profile")
-//    Call<ProfileResponse> getProfile(@Query("userId") int userId);
 }
