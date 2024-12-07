@@ -52,12 +52,12 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/home"/>
+            android:src="@drawable/shopping_cart"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Historiy"
+            android:text="Cart"
             android:textColor="@color/black"
             android:layout_marginLeft="30dp"
             android:layout_gravity="center"
@@ -76,12 +76,12 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/home"/>
+            android:src="@drawable/to_do_list"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Chat"
+            android:text="History"
             android:textColor="@color/black"
             android:layout_marginLeft="30dp"
             android:layout_gravity="center"
@@ -103,12 +103,12 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/home"/>
+            android:src="@drawable/user"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Location"
+            android:text="User"
             android:layout_gravity="center"
             android:textColor="@color/black"
             android:layout_marginLeft="30dp"
