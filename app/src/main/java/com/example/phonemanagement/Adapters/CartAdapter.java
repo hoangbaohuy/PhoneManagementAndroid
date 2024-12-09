@@ -128,6 +128,11 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
             // Glide.with(itemView.getContext())
             //     .load("https://your_base_image_url/" + detail.getImage())
             //     .into(phoneImage);
+            Glide.with(itemView.getContext())
+                    .load(detail.getImage())
+                    .placeholder(R.drawable.replace) // Optional placeholder
+                    .error(R.drawable.replace) // Optional error image
+                    .into(phoneImage);
         }
     }
 }

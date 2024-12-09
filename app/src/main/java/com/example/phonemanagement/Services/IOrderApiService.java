@@ -31,4 +31,6 @@ public interface IOrderApiService {
 
     @POST("Order")
     Call<Void> placeOrder(@Body Order order);
+    @GET("Order/{id}") // Match your API route
+    Call<Order> getOrderById(@Path("id") int id);
 }

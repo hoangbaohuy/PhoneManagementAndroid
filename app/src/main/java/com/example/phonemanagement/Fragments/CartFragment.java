@@ -81,6 +81,7 @@ public class CartFragment extends Fragment {
         return -1;
     }
 
+    
     private void loadCartByUserID() {
         // Lấy JWT từ SharedPreferences
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE);

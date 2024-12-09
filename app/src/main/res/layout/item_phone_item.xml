@@ -1,0 +1,38 @@
+<!-- res/layout/item_phone_item.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp"
+    android:layout_margin="5dp"
+    android:background="@drawable/rounded_border">
+
+    <TextView
+        android:id="@+id/serialNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Serial Number:"
+        android:textColor="@color/azure"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/teal_700"
+        android:text="Status:" />
+
+    <TextView
+        android:id="@+id/datePurchased"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Date Purchased:" />
+
+    <TextView
+        android:id="@+id/expiryDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/red_orange"
+        android:text="Expiry Date:" />
+
+</LinearLayout>

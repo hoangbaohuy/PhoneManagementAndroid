@@ -1,5 +1,8 @@
 package com.example.phonemanagement.Models;
 
+import java.io.Serializable;
+import java.util.List;
+
 public class OrderDetail {
     private int orderDetailId;
     private int phoneId;
@@ -7,11 +10,29 @@ public class OrderDetail {
     private int quantity;
     private double unitPrice;
     private int orderId;
+    private int warrantyPeriod;
+    private List<PhoneItem> phoneItems;
     public OrderDetail(int phoneId, int quantity) {
         this.phoneId = phoneId;
         this.quantity = quantity;
     }
     // Getters and Setters
+
+    public List<PhoneItem> getPhoneItems() {
+        return phoneItems;
+    }
+
+    public void setPhoneItems(List<PhoneItem> phoneItems) {
+        this.phoneItems = phoneItems;
+    }
+
+    public int getWarrantyPeriod() {
+        return warrantyPeriod;
+    }
+
+    public void setWarrantyPeriod(int warrantyPeriod) {
+        this.warrantyPeriod = warrantyPeriod;
+    }
 
     public int getOrderId() {
         return orderId;

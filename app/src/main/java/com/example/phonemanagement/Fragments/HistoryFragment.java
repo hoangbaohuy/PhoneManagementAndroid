@@ -43,7 +43,8 @@ public class HistoryFragment extends Fragment {
 
         recyclerViewOrders = view.findViewById(R.id.recyclerViewOrders);
         recyclerViewOrders.setLayoutManager(new LinearLayoutManager(getContext()));
-        orderAdapter = new OrderAdapter(new ArrayList<>());
+        orderAdapter = new OrderAdapter(requireContext(), new ArrayList<>());
+
         recyclerViewOrders.setAdapter(orderAdapter);
 
         loadOrderByUserID();

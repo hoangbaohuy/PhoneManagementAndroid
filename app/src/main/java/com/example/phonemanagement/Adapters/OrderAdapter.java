@@ -1,5 +1,7 @@
 package com.example.phonemanagement.Adapters;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.phonemanagement.Activities.OrderDetailActivity;
+import com.example.phonemanagement.Fragments.HistoryFragment;
 import com.example.phonemanagement.Models.Order;
 import com.example.phonemanagement.R;
 
@@ -16,8 +20,10 @@ import java.util.List;
 public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHolder> {
 
     private List<Order> orderList;
+    private Context context;
 
-    public OrderAdapter(List<Order> orderList) {
+    public OrderAdapter(Context context, List<Order> orderList) {
+        this.context = context;
         this.orderList = orderList;
     }
 
@@ -38,6 +44,12 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
     public void onBindViewHolder(@NonNull OrderViewHolder holder, int position) {
         Order order = orderList.get(position);
         holder.bind(order);
+        // Handle click event to navigate to OrderDetailActivity
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(context, OrderDetailActivity.class);
+            intent.putExtra("orderId", order.getOrderId()); // Pass the selected order
+            context.startActivity(intent);
+        });
     }
 
     @Override

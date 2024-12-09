@@ -1,0 +1,57 @@
+<!-- res/layout/activity_order_detail.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="16dp">
+    <ImageView
+        android:id="@+id/imageBack"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:padding="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/baseline_arrow_back_24" />
+    <!-- Order Summary -->
+    <TextView
+        android:id="@+id/orderId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Order ID:"
+        android:textStyle="bold"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/orderStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Status:"
+        android:textColor="@color/teal_700"
+        android:paddingTop="8dp" />
+
+    <TextView
+        android:id="@+id/orderDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Date:"
+        android:paddingTop="8dp" />
+
+    <TextView
+        android:id="@+id/orderTotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total:"
+        android:paddingTop="8dp"
+        android:textColor="@color/red_orange"
+        android:paddingBottom="16dp" />
+
+    <!-- RecyclerView for Order Details -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:background="@drawable/rounded_border"
+        android:id="@+id/orderDetailRecyclerView"
+        android:layout_width="match_parent"
+        android:padding="10dp"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

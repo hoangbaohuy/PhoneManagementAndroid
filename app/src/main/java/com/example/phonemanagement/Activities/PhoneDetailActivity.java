@@ -92,13 +92,13 @@ public class PhoneDetailActivity extends AppCompatActivity {
         storageTextView.setText("Storage: " + intent.getIntExtra("phoneStorage", 0) + "GB");
         brandNameTextView.setText("Brand: " + intent.getStringExtra("phoneBrandName"));
 
-//        // Load image (Optional)
-//        String imageUrl = intent.getStringExtra("phoneImage");
-//        Glide.with(this)
-//                .load(imageUrl)
-//                .placeholder(R.drawable.placeholder) // Optional placeholder
-//                .error(R.drawable.error) // Optional error image
-//                .into(phoneImageView);
+        // Load image (Optional)
+        String imageUrl = intent.getStringExtra("phoneImage");
+        Glide.with(this)
+                .load(imageUrl)
+                .placeholder(R.drawable.replace) // Optional placeholder
+                .error(R.drawable.replace) // Optional error image
+                .into(phoneImageView);
         setupAddToCartButton();
     }
 

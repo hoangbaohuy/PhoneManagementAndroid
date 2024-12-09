@@ -107,7 +107,11 @@ public class AccountFragment extends Fragment {
 
         // Load image using Glide
         if (user.getImage() != null) {
-            Glide.with(this).load(user.getImage()).into(userImage);
+            Glide.with(this)
+                    .load(user.getImage())
+                    .placeholder(R.drawable.replace) // Optional placeholder
+                    .error(R.drawable.replace) // Optional error image
+                    .into(userImage);
         } else {
             userImage.setImageResource(R.drawable.replace); // Default image
         }

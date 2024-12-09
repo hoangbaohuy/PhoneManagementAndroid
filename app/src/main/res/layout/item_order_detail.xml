@@ -1,0 +1,35 @@
+<!-- res/layout/item_phone_item.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <TextView
+        android:id="@+id/detailId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Detail ID:"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/quantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Quantity:" />
+    <TextView
+        android:id="@+id/unitPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/red_orange"
+        android:text="Unit Price:" />
+
+    <!-- RecyclerView for Phone Items -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/phoneItemsRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:nestedScrollingEnabled="false"
+        android:paddingTop="8dp" />
+
+</LinearLayout>
