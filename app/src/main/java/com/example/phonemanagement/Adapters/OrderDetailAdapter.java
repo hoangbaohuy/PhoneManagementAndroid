@@ -45,7 +45,7 @@ public class OrderDetailAdapter extends RecyclerView.Adapter<OrderDetailAdapter.
 
     static class OrderDetailViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView detailId, quantity, unitPrice;
+        private TextView detailId, quantity, unitPrice, warrantyPeriod;
         private RecyclerView phoneItemsRecyclerView;
 
         public OrderDetailViewHolder(@NonNull View itemView) {
@@ -53,6 +53,7 @@ public class OrderDetailAdapter extends RecyclerView.Adapter<OrderDetailAdapter.
             detailId = itemView.findViewById(R.id.detailId);
             quantity = itemView.findViewById(R.id.quantity);
             unitPrice = itemView.findViewById(R.id.unitPrice);
+            warrantyPeriod = itemView.findViewById(R.id.warrantyPeriod);
             phoneItemsRecyclerView = itemView.findViewById(R.id.phoneItemsRecyclerView);
         }
 
@@ -61,7 +62,7 @@ public class OrderDetailAdapter extends RecyclerView.Adapter<OrderDetailAdapter.
             detailId.setText("Detail ID: " + detail.getOrderDetailId());
             quantity.setText("Quantity: " + detail.getQuantity());
             unitPrice.setText("Unit Price: " + numberFormat.format(detail.getUnitPrice()) + "VND");
-
+            warrantyPeriod.setText("Warranty Period: " + detail.getWarrantyPeriod());
             // Bind phone items using PhoneItemAdapter
             PhoneItemAdapter adapter = new PhoneItemAdapter(detail.getPhoneItems());
             phoneItemsRecyclerView.setAdapter(adapter);

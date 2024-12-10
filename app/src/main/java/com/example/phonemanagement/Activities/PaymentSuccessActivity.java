@@ -5,6 +5,8 @@ import static java.security.AccessController.getContext;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -15,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.phonemanagement.Adapters.CartAdapter;
 import com.example.phonemanagement.R;
 import com.example.phonemanagement.Services.IOrderApiService;
+import com.example.phonemanagement.Services.IVnPayApiService;
 import com.example.phonemanagement.Utils.UnsafeOkHttpClient;
 
 import java.util.ArrayList;
@@ -40,6 +43,7 @@ public class PaymentSuccessActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (intOrderId != -1) {
                     checkoutCart(intOrderId);
+                    doneOrder(intOrderId);
                 }
             }
         });
@@ -77,6 +81,37 @@ public class PaymentSuccessActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
+                Toast.makeText(PaymentSuccessActivity.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void doneOrder(int orderId) {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://10.0.2.2:7295/api/")
+                .client(UnsafeOkHttpClient.getUnsafeOkHttpClient())
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        IVnPayApiService vnPayApiService = retrofit.create(IVnPayApiService.class);
+        Call<Void> call = vnPayApiService.doneOrder(orderId);
+
+        Log.d("PaymentSuccessActivity", "Request URL: " + call.request().url());
+        call.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if (response.isSuccessful()) {
+                    Toast.makeText(PaymentSuccessActivity.this, "Done order completed successfully", Toast.LENGTH_SHORT).show();
+
+                } else {
+                    Log.e("PaymentSuccessActivity", "Done order failed with status code: " + response.code());
+                    Toast.makeText(PaymentSuccessActivity.this, "Done order failed. Please try again.", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                Log.e("PaymentSuccessActivity", "API call failed: " + t.getMessage(), t);
                 Toast.makeText(PaymentSuccessActivity.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });

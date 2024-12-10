@@ -23,7 +23,7 @@
             <ImageView
                 android:id="@+id/phoneImageView"
                 android:layout_width="0dp"
-                android:layout_height="250dp"
+                android:layout_height="350dp"
                 android:scaleType="centerCrop"
                 app:srcCompat="@drawable/replace"
                 android:contentDescription="Phone Image"

@@ -1,0 +1,32 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/inputFullName"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="Full Name" />
+
+    <EditText
+        android:id="@+id/inputImage"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="Image URL" />
+
+    <EditText
+        android:id="@+id/inputAddress"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="Address" />
+
+    <EditText
+        android:id="@+id/inputPhoneNumber"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="Phone Number"
+        android:inputType="phone" />
+</LinearLayout>

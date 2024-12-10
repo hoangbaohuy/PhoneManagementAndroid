@@ -24,6 +24,13 @@
         android:textColor="@color/red_orange"
         android:text="Unit Price:" />
 
+    <TextView
+        android:id="@+id/warrantyPeriod"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/teal_700"
+        android:text="Warranty Period:" />
+
     <!-- RecyclerView for Phone Items -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/phoneItemsRecyclerView"
