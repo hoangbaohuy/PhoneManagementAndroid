@@ -13,7 +13,9 @@ import com.bumptech.glide.Glide;
 import com.example.phonemanagement.Models.Phone;
 import com.example.phonemanagement.R;
 
+import java.text.NumberFormat;
 import java.util.List;
+import java.util.Locale;
 
 public class PhoneAdapter extends RecyclerView.Adapter<PhoneAdapter.PhoneViewHolder> {
 
@@ -68,9 +70,10 @@ public class PhoneAdapter extends RecyclerView.Adapter<PhoneAdapter.PhoneViewHol
         }
 
         public void bind(Phone phone, OnItemClickListener listener) {
+            NumberFormat numberFormat = NumberFormat.getInstance(new Locale("vi", "VN"));
             phoneId.setText(""+ phone.getPhoneId());
             phoneName.setText(phone.getModelName());
-            phonePrice.setText("$" + phone.getPrice());
+            phonePrice.setText("Price: " + numberFormat.format(phone.getPrice()) + "VND");
             phoneStock.setText("Stock: " + phone.getStockQuantity());
 
             // Load image using Glide

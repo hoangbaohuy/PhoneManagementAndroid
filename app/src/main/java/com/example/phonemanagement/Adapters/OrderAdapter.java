@@ -15,7 +15,9 @@ import com.example.phonemanagement.Fragments.HistoryFragment;
 import com.example.phonemanagement.Models.Order;
 import com.example.phonemanagement.R;
 
+import java.text.NumberFormat;
 import java.util.List;
+import java.util.Locale;
 
 public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHolder> {
 
@@ -70,10 +72,11 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
         }
 
         public void bind(Order order) {
+            NumberFormat numberFormat = NumberFormat.getInstance(new Locale("vi", "VN"));
             orderId.setText("Order ID: " + order.getOrderId());
             orderStatus.setText("Status: " + order.getStatus());
             orderDate.setText("Date: " + order.getOrderDate());
-            orderTotal.setText("Total: $" + order.getTotalAmount());
+            orderTotal.setText("Total: " + numberFormat.format(order.getTotalAmount()) + "VND");
         }
     }
 }

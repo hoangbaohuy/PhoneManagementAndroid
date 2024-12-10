@@ -17,7 +17,9 @@ import com.example.phonemanagement.R;
 import com.example.phonemanagement.Services.IOrderApiService;
 import com.example.phonemanagement.Utils.UnsafeOkHttpClient;
 
+import java.text.NumberFormat;
 import java.util.List;
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -116,13 +118,14 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
         }
 
         public void bind(OrderDetail detail, String orderIdValue) {
+            NumberFormat numberFormat = NumberFormat.getInstance(new Locale("vi", "VN"));
             // Bind the OrderId
             orderId.setText("Order ID: " + orderIdValue);
             orderDetailId.setText("OrderDetail ID: " + detail.getOrderDetailId());
             // Bind the rest of the details
             phoneName.setText("Phone ID: " + detail.getPhoneId()); // Replace with phone name if available
             quantity.setText("Quantity: " + detail.getQuantity());
-            price.setText("Price: $" + detail.getUnitPrice());
+            price.setText("Price: " + numberFormat.format(detail.getUnitPrice()) + "VND");
 
             // Load the image using Glide or Picasso (optional)
             // Glide.with(itemView.getContext())

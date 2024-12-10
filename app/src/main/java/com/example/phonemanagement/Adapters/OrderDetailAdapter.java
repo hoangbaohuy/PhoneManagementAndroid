@@ -12,7 +12,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.phonemanagement.Models.OrderDetail;
 import com.example.phonemanagement.R;
 
+import java.text.NumberFormat;
 import java.util.List;
+import java.util.Locale;
 
 public class OrderDetailAdapter extends RecyclerView.Adapter<OrderDetailAdapter.OrderDetailViewHolder> {
 
@@ -55,9 +57,10 @@ public class OrderDetailAdapter extends RecyclerView.Adapter<OrderDetailAdapter.
         }
 
         public void bind(OrderDetail detail) {
+            NumberFormat numberFormat = NumberFormat.getInstance(new Locale("vi", "VN"));
             detailId.setText("Detail ID: " + detail.getOrderDetailId());
             quantity.setText("Quantity: " + detail.getQuantity());
-            unitPrice.setText("Unit Price: $" + detail.getUnitPrice());
+            unitPrice.setText("Unit Price: " + numberFormat.format(detail.getUnitPrice()) + "VND");
 
             // Bind phone items using PhoneItemAdapter
             PhoneItemAdapter adapter = new PhoneItemAdapter(detail.getPhoneItems());

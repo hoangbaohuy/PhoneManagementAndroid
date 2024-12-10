@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+    <Button
+        android:id="@+id/next_button"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:backgroundTint="@color/azure"
+        android:text=">"
+        android:layout_marginRight="5dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true" />
+    <!-- Progress bar to show loading state -->
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
+
+    <!-- WebView to display the payment page -->
+    <WebView
+        android:id="@+id/paymentWebView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+    <!-- TextView for displaying status or message -->
+    <TextView
+        android:id="@+id/statusText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Loading payment page..."
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
+
+</RelativeLayout>

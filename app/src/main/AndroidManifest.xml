@@ -38,6 +38,14 @@
             android:exported="true">
         </activity>
         <activity
+            android:name=".Activities.PaymentActivity"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".Activities.PaymentSuccessActivity"
+            android:exported="true">
+        </activity>
+        <activity
             android:name=".Activities.LoginActivity"
             android:exported="true">
             <intent-filter>

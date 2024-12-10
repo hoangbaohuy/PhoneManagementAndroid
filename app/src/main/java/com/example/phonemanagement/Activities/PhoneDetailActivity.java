@@ -22,8 +22,10 @@ import com.example.phonemanagement.Services.IOrderApiService;
 import com.example.phonemanagement.Utils.UnsafeOkHttpClient;
 import com.squareup.picasso.Picasso;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -75,12 +77,13 @@ public class PhoneDetailActivity extends AppCompatActivity {
             quantity++;
             txtOrder.setText(String.valueOf(quantity)); // Update the TextView
         });
+        NumberFormat numberFormat = NumberFormat.getInstance(new Locale("vi", "VN"));
         // Get data passed from the previous activity (HomeFragment)
         Intent intent = getIntent();
         phoneIdTextView.setText("" + intent.getIntExtra("phoneId",0));
         modelNameTextView.setText(intent.getStringExtra("phoneModel"));
         descriptionTextView.setText(intent.getStringExtra("phoneDescription"));
-        priceTextView.setText("$" + intent.getDoubleExtra("phonePrice", 0.0));
+        priceTextView.setText("Price: " + numberFormat.format(intent.getDoubleExtra("phonePrice", 0.0)) + "VND");
         stockTextView.setText("Stock: " + intent.getIntExtra("phoneStock", 0));
         chipsetTextView.setText("Chipset: " + intent.getStringExtra("phoneChipset"));
         gpuTextView.setText("GPU: " + intent.getStringExtra("phoneGpu"));

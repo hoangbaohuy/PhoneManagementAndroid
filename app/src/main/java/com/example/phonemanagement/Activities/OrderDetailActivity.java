@@ -17,7 +17,9 @@ import com.example.phonemanagement.R;
 import com.example.phonemanagement.Services.IOrderApiService;
 import com.example.phonemanagement.Utils.UnsafeOkHttpClient;
 
+import java.text.NumberFormat;
 import java.util.List;
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -84,11 +86,12 @@ public class OrderDetailActivity extends AppCompatActivity {
     }
 
     private void populateOrderDetails(Order order) {
+        NumberFormat numberFormat = NumberFormat.getInstance(new Locale("vi", "VN"));
         // Populate order summary details
         this.orderId.setText("Order ID: " + order.getOrderId());
         orderStatus.setText("Status: " + order.getStatus());
         orderDate.setText("Date: " + order.getOrderDate());
-        orderTotal.setText("Total: $" + order.getTotalAmount());
+        orderTotal.setText("Total: " + numberFormat.format(order.getTotalAmount()) + "VND");
 
         // Set up RecyclerView for order details
         List<OrderDetail> orderDetails = order.getOrderDetails();

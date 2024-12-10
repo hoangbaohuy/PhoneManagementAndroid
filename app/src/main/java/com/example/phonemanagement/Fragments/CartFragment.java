@@ -1,6 +1,7 @@
 package com.example.phonemanagement.Fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -17,6 +18,8 @@ import android.widget.Toast;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.interfaces.DecodedJWT;
+import com.example.phonemanagement.Activities.OrderDetailActivity;
+import com.example.phonemanagement.Activities.PaymentActivity;
 import com.example.phonemanagement.Adapters.CartAdapter;
 import com.example.phonemanagement.Models.Order;
 import com.example.phonemanagement.Models.OrderDetail;
@@ -63,9 +66,14 @@ public class CartFragment extends Fragment {
 
         btnCheckoutCart.setOnClickListener(v -> {
             int orderId = getSelectedOrderId();
-            if (orderId != -1) { // Only proceed if a valid orderId is returned
-                checkoutCart(orderId);
+            if (orderId != -1) {
+                Intent intent = new Intent(requireContext(), PaymentActivity.class);
+                intent.putExtra("orderId", orderId); // Pass the selected order
+                startActivity(intent);
             }
+//            if (orderId != -1) { // Only proceed if a valid orderId is returned
+//                checkoutCart(orderId);
+//            }
         });
         loadCartByUserID();
         return view;
