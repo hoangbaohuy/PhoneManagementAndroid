@@ -3,15 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp">
-    <Button
-        android:id="@+id/next_button"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:backgroundTint="@color/azure"
-        android:text=">"
-        android:layout_marginRight="5dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true" />
     <!-- Progress bar to show loading state -->
     <ProgressBar
         android:id="@+id/progressBar"
@@ -35,5 +26,13 @@
         android:text="Loading payment page..."
         android:layout_centerInParent="true"
         android:visibility="gone" />
-
+    <Button
+        android:id="@+id/close_button"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:backgroundTint="@color/red_orange"
+        android:text="X"
+        android:layout_marginRight="5dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true" />
 </RelativeLayout>

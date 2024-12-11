@@ -29,24 +29,17 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class PaymentSuccessActivity extends AppCompatActivity {
-    private Button success_button,close_button;
-    private CartAdapter cartAdapter;
+    private Button close_button;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.payment_success);
         close_button = findViewById(R.id.close_button);
-        success_button = findViewById(R.id.success_button);
         int intOrderId = getIntent().getIntExtra("orderId", -1);
-        success_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (intOrderId != -1) {
-                    checkoutCart(intOrderId);
-                    doneOrder(intOrderId);
-                }
-            }
-        });
+        if (intOrderId != -1) {
+            checkoutCart(intOrderId);
+            doneOrder(intOrderId);
+        }
         close_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,7 +64,6 @@ public class PaymentSuccessActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
 
                     Toast.makeText(PaymentSuccessActivity.this, "Checkout completed successfully", Toast.LENGTH_SHORT).show();
-                    cartAdapter.updateOrderDetails(new ArrayList<>());  // Clear existing data first
                     // Refresh cart items
                 } else {
                     Log.e("Payment Success", "Failed with error code: " + response.code());

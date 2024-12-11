@@ -30,19 +30,22 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class PaymentActivity extends AppCompatActivity {
-
+    private Button close_button;
     private WebView paymentWebView;
-    private Button next_button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment);
-
+        close_button = findViewById(R.id.close_button);
         paymentWebView = findViewById(R.id.paymentWebView);
-        next_button = findViewById(R.id.next_button);
         paymentWebView.getSettings().setJavaScriptEnabled(true); // Enable JavaScript if required
-
+        close_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         // Replace "5" with your actual order ID
         int intOrderId = getIntent().getIntExtra("orderId", -1);
         if (intOrderId != -1) {
@@ -52,15 +55,7 @@ public class PaymentActivity extends AppCompatActivity {
             Toast.makeText(this, "Invalid Order ID!", Toast.LENGTH_SHORT).show();
             finish();
         }
-        next_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(PaymentActivity.this, PaymentSuccessActivity.class);
-                intent.putExtra("orderId", intOrderId); // Pass the selected order
-                startActivity(intent);
-                finish();
-            }
-        });
+
     }
 
     private void proceedPayment(String orderId) {
@@ -88,7 +83,32 @@ public class PaymentActivity extends AppCompatActivity {
                     paymentWebView.setWebViewClient(new WebViewClient());  // Ensure links open in WebView
                     paymentWebView.setVisibility(View.VISIBLE);  // Show WebView
                     paymentWebView.loadUrl(paymentUrl);
+                    paymentWebView.setWebViewClient(new WebViewClient() {
+                        @Override
+                        public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                            if (url.contains("/payment-callback")) {
+                                // Extract query parameters from the URL
+                                Uri callbackUri = Uri.parse(url);
 
+                                String vnpResponseCode = callbackUri.getQueryParameter("vnp_ResponseCode");
+                                String orderId = callbackUri.getQueryParameter("orderId");
+
+                                if ("00".equals(vnpResponseCode)) {
+                                    // Payment is successful
+                                    Intent intent = new Intent(PaymentActivity.this, PaymentSuccessActivity.class);
+                                    intent.putExtra("orderId", orderId);
+                                    startActivity(intent);
+                                    finish();
+                                } else {
+                                    // Payment failed or was canceled
+                                    Toast.makeText(PaymentActivity.this, "Payment Failed. Code: " + vnpResponseCode, Toast.LENGTH_SHORT).show();
+                                    // Optionally, redirect to a failure activity or simply stay on the current screen.
+                                }
+                                return true; // Prevent the WebView from loading the callback URL
+                            }
+                            return false; // Allow the WebView to load other URLs
+                        }
+                    });
                     // Check payment result after the payment is completed
 //                    checkPaymentResult(orderId);
                 } else {
