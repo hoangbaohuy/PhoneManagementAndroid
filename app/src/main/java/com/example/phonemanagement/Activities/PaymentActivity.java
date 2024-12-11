@@ -100,9 +100,9 @@ public class PaymentActivity extends AppCompatActivity {
                                     startActivity(intent);
                                     finish();
                                 } else {
-                                    // Payment failed or was canceled
-                                    Toast.makeText(PaymentActivity.this, "Payment Failed. Code: " + vnpResponseCode, Toast.LENGTH_SHORT).show();
-                                    // Optionally, redirect to a failure activity or simply stay on the current screen.
+                                    Intent intent = new Intent(PaymentActivity.this, PaymentFailureActivity.class);
+                                    startActivity(intent);
+                                    finish();
                                 }
                                 return true; // Prevent the WebView from loading the callback URL
                             }
