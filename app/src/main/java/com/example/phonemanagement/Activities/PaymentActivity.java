@@ -94,9 +94,10 @@ public class PaymentActivity extends AppCompatActivity {
                                 String orderId = callbackUri.getQueryParameter("orderId");
 
                                 if ("00".equals(vnpResponseCode)) {
+                                    int intOrderId = getIntent().getIntExtra("orderId", -1);
                                     // Payment is successful
                                     Intent intent = new Intent(PaymentActivity.this, PaymentSuccessActivity.class);
-                                    intent.putExtra("orderId", orderId);
+                                    intent.putExtra("orderId", intOrderId);
                                     startActivity(intent);
                                     finish();
                                 } else {

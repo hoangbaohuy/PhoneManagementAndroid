@@ -88,7 +88,7 @@ public class PhoneDetailActivity extends AppCompatActivity {
         chipsetTextView.setText("Chipset: " + intent.getStringExtra("phoneChipset"));
         gpuTextView.setText("GPU: " + intent.getStringExtra("phoneGpu"));
         colorTextView.setText("Color: " + intent.getStringExtra("phoneColor"));
-        warrantyTextView.setText("Warranty Period: " + intent.getIntExtra("phoneWarrantyPeriod", 0) + " months");
+        warrantyTextView.setText("Warranty Period: " + intent.getIntExtra("phoneWarrantyPeriod", 0));
         releaseDateTextView.setText("Release Date: " + intent.getStringExtra("phoneReleaseDate"));
         operatingSystemTextView.setText("OS: " + intent.getStringExtra("phoneOperatingSystem"));
         ramTextView.setText("RAM: " + intent.getIntExtra("phoneRam", 0) + "GB");

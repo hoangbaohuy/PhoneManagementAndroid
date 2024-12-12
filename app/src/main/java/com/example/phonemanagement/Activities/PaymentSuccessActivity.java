@@ -30,6 +30,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class PaymentSuccessActivity extends AppCompatActivity {
     private Button close_button;
+    private CartAdapter cartAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,7 +63,7 @@ public class PaymentSuccessActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.isSuccessful()) {
-
+                    cartAdapter.updateOrderDetails(new ArrayList<>());
                     Toast.makeText(PaymentSuccessActivity.this, "Checkout completed successfully", Toast.LENGTH_SHORT).show();
                     // Refresh cart items
                 } else {
