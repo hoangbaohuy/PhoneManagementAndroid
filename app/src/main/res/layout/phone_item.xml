@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/rounded_border"
+    android:layout_margin="5dp"
+    android:padding="8dp">
+
+    <TextView
+        android:id="@+id/tvSerialNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Serial Number"
+        android:textColor="@color/azure"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Status"
+        android:textColor="@color/teal_700"
+        android:textSize="18sp" />
+    <TextView
+        android:id="@+id/tvDateImported"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Date Imported"
+        android:textSize="18sp" />
+    <TextView
+        android:id="@+id/tvDatePurchased"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Date Purchased"
+        android:textSize="18sp" />
+    <TextView
+        android:id="@+id/tvExpiryDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Expiry Date"
+        android:textSize="18sp" />
+</LinearLayout>

@@ -155,32 +155,32 @@ public class CustomerActivity extends AppCompatActivity {
         LinearLayout locationLayout = dialog.findViewById(R.id.layoutLocation);
         ImageView cancelButton = dialog.findViewById(R.id.cancelButton);
 
-//        historyLayout.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                dialog.dismiss();
-//                // Create an Intent to start the new activity
-//                Intent intent = new Intent(CustomerActivity.this, OrderActivity.class);
-//
-//                // Start the new activity
-//                startActivity(intent);
-//
-//                Toast.makeText(CustomerActivity.this,"History is clicked",Toast.LENGTH_SHORT).show();
-//
-//            }
-//        });
-//
-//        chatLayout.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent crispIntent = new Intent(CustomerActivity.this, ChatActivity.class);
-//                startActivity(crispIntent);
-//                dialog.dismiss();
-//                Toast.makeText(CustomerActivity.this,"Chat is Clicked",Toast.LENGTH_SHORT).show();
-//
-//            }
-//        });
+        historyLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                dialog.dismiss();
+                // Create an Intent to start the new activity
+                Intent intent = new Intent(CustomerActivity.this, PaymentListActivity.class);
+
+                // Start the new activity
+                startActivity(intent);
+
+                Toast.makeText(CustomerActivity.this,"Payment is clicked",Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+        chatLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+                Intent intent = new Intent(CustomerActivity.this, PhoneItemActivity.class);
+                startActivity(intent);
+                Toast.makeText(CustomerActivity.this,"Mobile Phone is Clicked",Toast.LENGTH_SHORT).show();
+
+            }
+        });
 //
 //        locationLayout.setOnClickListener(new View.OnClickListener() {
 //            @Override

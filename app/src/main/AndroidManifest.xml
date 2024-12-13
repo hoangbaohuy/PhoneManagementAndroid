@@ -50,6 +50,14 @@
             android:exported="true">
         </activity>
         <activity
+            android:name=".Activities.PhoneItemActivity"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".Activities.PaymentListActivity"
+            android:exported="true">
+        </activity>
+        <activity
             android:name=".Activities.LoginActivity"
             android:exported="true">
             <intent-filter>
